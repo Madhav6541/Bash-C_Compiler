@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BASH-C Compiler</title>
+    <style>
+      /* Set a background color for the page */
+      body {
+  background: linear-gradient(#5fcbf2, #2879e3);
+}
+
+
+/* Center the form on the page */
+form {
+    margin: 0 auto;
+    max-width: 500px;
+}
+
+/* Add some padding to the form */
+form {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+}
+
+/* Add a border to the output and result textareas */
+textarea[name="output"],
+textarea[name="result"] {
+    border: 1px solid #ddd;
+    align: center;
+}
+
+/* Style the input and submit buttons */
+input[type="file"],
+input[type="submit"] {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+input[type="file"] {
+    padding: 10px;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+input[type="file"]:hover,
+input[type="submit"]:hover {
+    background-color: #3e8e41;
+}
+
+/* Style the label and input elements */
+label {
+    font-weight: bold;
+}
+
+input[type="file"] {
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+
+textarea {
+    margin-bottom: 10px;
+}
+
+/* Style the input and output sections */
+form:nth-of-type(1) {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+}
+
+form:nth-of-type(2) {
+    margin-top: 20px;
+}
+
+/* Add some spacing between the forms */
+form:not(:last-of-type) {
+    margin-bottom: 20px;
+}
+
+
+    </style>
+</head>
+<body>
+    <h1>BASH-C Compiler</h1>
+    <form method="POST" action="/compile" enctype="multipart/form-data">
+        <label for="file">Upload a file:</label>
+        <input type="file" id="file" name="file">
+        <br>
+        <br>
+        <input type="submit" value="Compile">
+    </form>
+    <br>
+    <br>
+    <center>
+    <textarea name="output" rows="10" cols="80">{{ output }}</textarea></center>
+    <br>
+    <br>
+    <form method="POST" action="/run" enctype="multipart/form-data">
+        <label for="input">Input:</label>
+        <br>
+        <textarea id="input" name="input" rows="5" cols="65"></textarea>
+        <br>
+        <input type="hidden" name="output" value="{{ output }}">
+        <br>
+        <input type="submit" value="Run">
+    </form>
+    <br>
+    <br>
+<center>
+    <textarea name="result" rows="10" cols="80">{{ result }}</textarea></center>
+</body>
+</html>
